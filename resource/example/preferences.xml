@@ -1,0 +1,8 @@
+<examplePreferenceGroup>
+   <general>
+      <param name="ask_to_close">true</param>
+   </general>
+   <connection>
+      <servers class="java.util.ArrayList"/>
+   </connection>
+</examplePreferenceGroup>

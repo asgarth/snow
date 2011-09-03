@@ -1,0 +1,171 @@
+<project name="swat" default="build" basedir=".">
+	<description>swat</description>
+
+	<property file="build.version" />
+
+	<property name="name" value="swat" />
+	<property name="projname" value="swat" />
+	
+	<property name="src" location="src" />
+	<property name="lib" location="lib" />
+	<property name="conf" location="conf" />
+	<property name="build.classes" location="build/classes" />
+	<property name="build.jars" location="build/jars" />
+	<property name="build.docs" location="docs" />
+	<property name="build.release" location="release" />
+
+	<path id="lib.classpath">
+		<fileset dir="${lib}" includes="**/*.jar" />
+	</path>
+
+	<target name="compile">
+		<mkdir dir="${build.classes}" />
+		<javac destdir="${build.classes}" classpathref="lib.classpath" debug="true">
+			<src path="${src}" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<mkdir dir="${build.jars}" />
+
+		<jar destfile="${build.jars}/${projname}-${version}.jar">
+			<fileset dir="${build.classes}">
+				<include name="org/**/*.class" />
+				<exclude name="org/swat/binding/**/*.class" />
+				<exclude name="org/swat/prefs/**/*.class" />
+				<exclude name="org/swat/extra/**/*.class" />
+			</fileset>
+			<manifest>
+			    <attribute name="Specification-Title" value="${name}" />
+			    <attribute name="Specification-Version" value="${version}" />
+			    <attribute name="Implementation-Title" value="${name}" />
+			    <attribute name="Implementation-Version" value="${version}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="jar-binding" depends="compile">
+		<mkdir dir="${build.jars}" />
+
+		<jar destfile="${build.jars}/${projname}-binding-${version}.jar">
+			<fileset dir="${build.classes}">
+				<include name="org/swat/binding/**/*.class" />
+			</fileset>
+			<manifest>
+			    <attribute name="Specification-Title" value="${name}" />
+			    <attribute name="Specification-Version" value="${version}" />
+			    <attribute name="Implementation-Title" value="${name}" />
+			    <attribute name="Implementation-Version" value="${version}" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="jar-prefs" depends="compile">
+		<mkdir dir="${build.jars}" />
+
+		<jar destfile="${build.jars}/${projname}-prefs-${version}.jar">
+			<fileset dir="${build.classes}">
+				<include name="org/swat/prefs/**/*.class" />
+			</fileset>
+			<manifest>
+			    <attribute name="Specification-Title" value="${name}" />
+			    <attribute name="Specification-Version" value="${version}" />
+			    <attribute name="Implementation-Title" value="${name}" />
+			    <attribute name="Implementation-Version" value="${version}" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="jar-extra" depends="compile">
+		<mkdir dir="${build.jars}" />
+
+		<jar destfile="${build.jars}/${projname}-extra-${version}.jar">
+			<fileset dir="${build.classes}">
+				<include name="org/swat/extra/**/*.class" />
+			</fileset>
+			<manifest>
+			    <attribute name="Specification-Title" value="${name}" />
+			    <attribute name="Specification-Version" value="${version}" />
+			    <attribute name="Implementation-Title" value="${name}" />
+			    <attribute name="Implementation-Version" value="${version}" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="jar-all" depends="compile">
+		<mkdir dir="${build.jars}" />
+
+		<jar destfile="${build.jars}/${projname}-all-${version}.jar">
+			<fileset dir="${build.classes}">
+				<include name="org/**/*.class" />
+			</fileset>
+			<manifest>
+			    <attribute name="Specification-Title" value="${name}" />
+			    <attribute name="Specification-Version" value="${version}" />
+			    <attribute name="Implementation-Title" value="${name}" />
+			    <attribute name="Implementation-Version" value="${version}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="javadoc">
+		<echo message="cleaning javadoc ..." />
+		<delete dir="${build.docs}" />
+		<mkdir dir="${build.docs}" />
+
+		<javadoc destdir="${build.docs}" sourcepath="${src}" classpathref="lib.classpath" access="protected" use="true" source="1.5.0" windowtitle="${projname}">
+			<fileset dir="${src}" includes="**/*.java" />
+
+			<doctitle><![CDATA[<h1>swat</h1>]]></doctitle>
+
+			<link href="http://java.sun.com/j2se/1.5.0/docs/api/" />
+			<link href="http://logging.apache.org/log4j/1.2/apidocs/" />
+		</javadoc>
+	</target>
+
+	<target name="release.main" depends="build, javadoc">
+		<mkdir dir="${build.release}" />
+
+		<zip destfile="${build.release}/${projname}-${version}.zip">
+			<zipfileset dir="${build.docs}" prefix="${projname}-${version}/docs" />
+			<zipfileset dir="${build.jars}" prefix="${projname}-${version}" />
+			<zipfileset file="*.txt" prefix="${projname}-${version}" />
+			<zipfileset dir="${lib}" prefix="${projname}-${version}/lib" excludes="**/*linux*, **/*win*, **/*mac*"/>
+		</zip>
+	</target>
+	
+	<target name="release.src">
+		<mkdir dir="${build.release}" />
+		
+		<zip destfile="${build.release}/${projname}-${version}-src.zip">
+			<zipfileset dir="${src}" includes="**/*.java" prefix="${projname}-${version}/src" />
+			<zipfileset file="LICENSE.txt" prefix="${projname}-${version}" />
+			<zipfileset file="build.xml" prefix="${projname}-${version}" />
+			<zipfileset file="build.version" prefix="${projname}-${version}" />
+		</zip>
+	</target>
+
+	<target name="release.example">
+		<mkdir dir="${build.release}" />
+		
+		<zip destfile="${build.release}/${projname}-${version}-example.zip">
+			<zipfileset dir="${src}" includes="example/**/*.java" prefix="${projname}-${version}/" />
+		</zip>
+	</target>
+	
+	<target name="clean">
+		<delete dir="${build.classes}" />
+		<delete dir="${build.jars}" />
+		<delete dir="${build.docs}" />
+		<delete file="${build.release}/${projname}-${version}.zip" />
+		<delete file="${build.release}/${projname}-${version}-src.zip" />
+		<delete file="${build.release}/${projname}-${version}-example.zip" />
+	</target>
+
+	<target name="build" depends="clean, compile, jar, jar-binding, jar-prefs, jar-extra, jar-all" />
+
+	<target name="release" depends="release.main, release.src, release.example" />
+
+	<target name="all" depends="build, release" />
+
+</project>
