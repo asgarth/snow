@@ -1,10 +1,10 @@
-<project name="swat" default="build" basedir=".">
-	<description>swat</description>
+<project name="snow" default="build" basedir=".">
+	<description>snow</description>
 
 	<property file="build.version" />
 
-	<property name="name" value="swat" />
-	<property name="projname" value="swat" />
+	<property name="name" value="snow" />
+	<property name="projname" value="snow" />
 	
 	<property name="src" location="src" />
 	<property name="lib" location="lib" />
@@ -31,9 +31,9 @@
 		<jar destfile="${build.jars}/${projname}-${version}.jar">
 			<fileset dir="${build.classes}">
 				<include name="org/**/*.class" />
-				<exclude name="org/swat/binding/**/*.class" />
-				<exclude name="org/swat/prefs/**/*.class" />
-				<exclude name="org/swat/extra/**/*.class" />
+				<exclude name="org/snow/binding/**/*.class" />
+				<exclude name="org/snow/prefs/**/*.class" />
+				<exclude name="org/snow/extra/**/*.class" />
 			</fileset>
 			<manifest>
 			    <attribute name="Specification-Title" value="${name}" />
@@ -49,7 +49,7 @@
 
 		<jar destfile="${build.jars}/${projname}-binding-${version}.jar">
 			<fileset dir="${build.classes}">
-				<include name="org/swat/binding/**/*.class" />
+				<include name="org/snow/binding/**/*.class" />
 			</fileset>
 			<manifest>
 			    <attribute name="Specification-Title" value="${name}" />
@@ -65,7 +65,7 @@
 
 		<jar destfile="${build.jars}/${projname}-prefs-${version}.jar">
 			<fileset dir="${build.classes}">
-				<include name="org/swat/prefs/**/*.class" />
+				<include name="org/snow/prefs/**/*.class" />
 			</fileset>
 			<manifest>
 			    <attribute name="Specification-Title" value="${name}" />
@@ -81,7 +81,7 @@
 
 		<jar destfile="${build.jars}/${projname}-extra-${version}.jar">
 			<fileset dir="${build.classes}">
-				<include name="org/swat/extra/**/*.class" />
+				<include name="org/snow/extra/**/*.class" />
 			</fileset>
 			<manifest>
 			    <attribute name="Specification-Title" value="${name}" />
@@ -116,7 +116,7 @@
 		<javadoc destdir="${build.docs}" sourcepath="${src}" classpathref="lib.classpath" access="protected" use="true" source="1.5.0" windowtitle="${projname}">
 			<fileset dir="${src}" includes="**/*.java" />
 
-			<doctitle><![CDATA[<h1>swat</h1>]]></doctitle>
+			<doctitle><![CDATA[<h1>snow</h1>]]></doctitle>
 
 			<link href="http://java.sun.com/j2se/1.5.0/docs/api/" />
 			<link href="http://logging.apache.org/log4j/1.2/apidocs/" />
