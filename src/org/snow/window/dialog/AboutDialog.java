@@ -15,7 +15,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Shell;
 
-
 public class AboutDialog extends Dialog {
 
 	public static final int WIDTH = 400;
@@ -30,7 +29,6 @@ public class AboutDialog extends Dialog {
 
 	private String text;
 
-
 	public AboutDialog( final Shell shell, final String title ) {
 		super( shell );
 		this.display = shell.getDisplay();
@@ -39,7 +37,7 @@ public class AboutDialog extends Dialog {
 		text = "";
 	}
 
-	public AboutDialog( final Shell shell, final String title , final String imagePath, final String text ) {
+	public AboutDialog( final Shell shell, final String title, final String imagePath, final String text ) {
 		this( shell, title );
 
 		setImage( imagePath );
@@ -54,45 +52,46 @@ public class AboutDialog extends Dialog {
 		this.text = text;
 	}
 
-	public void open () {
+	public void open() {
 		final Shell shell = new Shell( getParent(), SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL );
 		shell.setText( title );
 		shell.setSize( WIDTH, HEIGHT );
 		shell.setLayout( new FormLayout() );
 
 		final Button button = new Button( shell, SWT.PUSH );
-		button.setText ( "Close" );
+		button.setText( "Close" );
 		button.setSize( 60, 25 );
 		final FormData buttonData = new FormData();
-		buttonData.left = new FormAttachment(76, 0);
-		buttonData.right = new FormAttachment(100, -5);
-		buttonData.bottom = new FormAttachment(100, -5);
+		buttonData.left = new FormAttachment( 76, 0 );
+		buttonData.right = new FormAttachment( 100, -5 );
+		buttonData.bottom = new FormAttachment( 100, -5 );
 		button.setLayoutData( buttonData );
 		button.addSelectionListener( new SelectionAdapter() {
+
 			public void widgetSelected( SelectionEvent e ) {
-				shell.close ();
+				shell.close();
 			}
-		});
+		} );
 
 		final Link aboutText = new Link( shell, SWT.NONE );
 		aboutText.setBackground( display.getSystemColor( SWT.COLOR_WHITE ) );
 		aboutText.setText( text );
 		final FormData aboutData = new FormData();
-		aboutData.top = new FormAttachment(100, -75);
-		aboutData.bottom = new FormAttachment(100, -8);
-		aboutData.left = new FormAttachment(0, 10);
-		aboutData.right = new FormAttachment(75, 0);
-		aboutText.setLayoutData(aboutData);
+		aboutData.top = new FormAttachment( 100, -75 );
+		aboutData.bottom = new FormAttachment( 100, -8 );
+		aboutData.left = new FormAttachment( 0, 10 );
+		aboutData.right = new FormAttachment( 75, 0 );
+		aboutText.setLayoutData( aboutData );
 
 		if( image != null ) {
 			final Label label = new Label( shell, SWT.NONE );
 			label.setImage( image );
 			final FormData labelData = new FormData();
-			labelData.top = new FormAttachment(0, 0);
-			labelData.bottom = new FormAttachment(100, 0);
-			labelData.left = new FormAttachment(0, 0);
-			labelData.right = new FormAttachment(100, 0);
-			label.setLayoutData(labelData);
+			labelData.top = new FormAttachment( 0, 0 );
+			labelData.bottom = new FormAttachment( 100, 0 );
+			labelData.left = new FormAttachment( 0, 0 );
+			labelData.right = new FormAttachment( 100, 0 );
+			label.setLayoutData( labelData );
 		}
 
 		/** open shell */
@@ -103,11 +102,11 @@ public class AboutDialog extends Dialog {
 		shell.setLocation( x, y );
 		shell.open();
 
-		while( ! shell.isDisposed() )
-			if( ! display.readAndDispatch() )
+		while( !shell.isDisposed() )
+			if( !display.readAndDispatch() )
 				display.sleep();
 
-		if( image != null && ! image.isDisposed() )
+		if( image != null && !image.isDisposed() )
 			image.dispose();
 	}
 

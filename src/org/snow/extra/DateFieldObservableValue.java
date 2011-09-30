@@ -8,8 +8,6 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 
-
-
 public class DateFieldObservableValue extends AbstractObservableValue {
 
 	private final DateField field;
@@ -18,16 +16,18 @@ public class DateFieldObservableValue extends AbstractObservableValue {
 
 	private Object selection = null;
 
-
 	public DateFieldObservableValue( final DateField input ) {
 		this.field = input;
 		this.selectionListener = new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
+
+			public void widgetSelected( SelectionEvent e ) {
 				final Object newSelection = field.getValue();
-				fireValueChange(new ValueDiff() {
+				fireValueChange( new ValueDiff() {
+
 					public Object getNewValue() {
 						return newSelection;
 					}
+
 					public Object getOldValue() {
 						return selection;
 					}
@@ -50,7 +50,7 @@ public class DateFieldObservableValue extends AbstractObservableValue {
 	}
 
 	@Override
-	protected void doSetValue(Object value) {
+	protected void doSetValue( Object value ) {
 		field.setValue( ( Date ) value );
 		selection = value;
 	}

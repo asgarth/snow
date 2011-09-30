@@ -8,7 +8,6 @@ public class WizardPage {
 
 	private final Control control;
 
-
 	public WizardPage( final String title, final Control control ) {
 		this.title = title;
 		this.control = control;

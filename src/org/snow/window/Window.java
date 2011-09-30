@@ -9,7 +9,7 @@ public interface Window {
 	public void close();
 
 	public Composite getContent();
-	
+
 	public void setContent( final Composite content );
 
 }

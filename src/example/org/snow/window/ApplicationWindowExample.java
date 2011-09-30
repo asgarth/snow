@@ -3,7 +3,7 @@ package example.org.snow.window;
 import org.eclipse.swt.widgets.Display;
 import org.snow.form.Form;
 import org.snow.form.field.TextField;
-import org.snow.form.layout.MigFormLayoutHelper;
+import org.snow.form.layout.GridLayoutHelper;
 import org.snow.window.ApplicationWindow;
 import org.snow.window.footer.StandardFooter;
 import org.snow.window.header.TitleHeader;
@@ -14,18 +14,18 @@ public class ApplicationWindowExample {
 		final Display display = new Display();
 		final ApplicationWindow app = new ApplicationWindow( display, "Application Window Example", 800, 600 );
 		app.setHeader( new TitleHeader( app, "Title" ) );
-		
+
 		final Form form = new Form( app.getShell() );
-		form.setFormLayoutHelper( new MigFormLayoutHelper() );
+		form.setFormLayoutHelper( new GridLayoutHelper() );
 		app.setContent( form );
-		
+
 		final TextField name = new TextField( form, "Name" );
 		form.add( "name", name );
 
 		final TextField surname = new TextField( form );
 		surname.setCaption( "Surname" );
 		form.add( "surname", surname );
-		
+
 		final TextField field1 = new TextField( form );
 		field1.setCaption( "field1" );
 		form.add( "field1", field1 );
@@ -51,7 +51,7 @@ public class ApplicationWindowExample {
 		form.add( "field6", field6 );
 
 		app.setFooter( new StandardFooter( app, "OK", "Close" ) );
-		
+
 		app.open();
 	}
 

@@ -6,7 +6,6 @@ import java.util.List;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-
 /** Manager class for loading and saving of configuration properties on an XML file. */
 public class XMLPreferenceManager<T extends PreferenceContainer> implements PreferenceManager<T> {
 
@@ -15,7 +14,6 @@ public class XMLPreferenceManager<T extends PreferenceContainer> implements Pref
 	private String xmlConfigFile;
 
 	private T root;
-
 
 	public synchronized static <T extends PreferenceContainer> PreferenceManager init( final String xmlConfigFile, final T root ) {
 		instance = new XMLPreferenceManager( xmlConfigFile, root );
@@ -39,13 +37,13 @@ public class XMLPreferenceManager<T extends PreferenceContainer> implements Pref
 	public void load() {
 		// initialize a new file if not found
 		final File file = new File( xmlConfigFile );
-		if( ! file.exists() )
+		if( !file.exists() )
 			save();
 
 		// load values from file
 		try {
 			final Serializer serializer = new Persister();
-			this.root = (T) serializer.read( root.getClass(), new File( xmlConfigFile ) );
+			this.root = ( T ) serializer.read( root.getClass(), new File( xmlConfigFile ) );
 
 		} catch( Exception e ) {
 			throw new RuntimeException( "error loading configuration file", e );
@@ -66,11 +64,11 @@ public class XMLPreferenceManager<T extends PreferenceContainer> implements Pref
 		return root;
 	}
 
-	public PreferenceCategory get( final String category ) {
+	public PreferenceGroup get( final String category ) {
 		return root.get( category );
 	}
 
-	public List<PreferenceCategory> getGroups() {
+	public List<PreferenceGroup> getGroups() {
 		return root.getAll();
 	}
 

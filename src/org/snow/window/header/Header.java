@@ -4,7 +4,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.snow.window.ApplicationWindow;
 
-
 public abstract class Header extends Composite {
 
 	public Header( final ApplicationWindow parent ) {

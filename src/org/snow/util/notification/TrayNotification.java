@@ -9,26 +9,24 @@ import org.eclipse.swt.widgets.ToolTip;
 import org.eclipse.swt.widgets.Tray;
 import org.eclipse.swt.widgets.TrayItem;
 
-
 /** This class provides functionality to show a message in the system tray and associate an action with it.
  * 
- * <p>Example usage:
- * <code>
+ * <p>
+ * Example usage: <code>
  * final TrayNotification tray = new TrayNotification( shell );
  * tray.setSelectionListener( new Listener() {
- *			public void handleEvent( Event event ) {
- *				System.out.print( "SELECTED" );
- *				tray.dispose();
- *			}
- *		});
- *
+ * 			public void handleEvent( Event event ) {
+ * 				System.out.print( "SELECTED" );
+ * 				tray.dispose();
+ * 			}
+ * 		});
+ * 
  * tray.show( "TITLE", "MESSAGE" );
  * </code>
- *
- *
- * The method {@link #dispose()} should be called at the end of the listener associated with instance of this class if the
- * tray item must be closed at the end of the listener action.
- */
+ * 
+ * 
+ * The method {@link #dispose()} should be called at the end of the listener associated with instance of this class if the tray item must be
+ * closed at the end of the listener action. */
 public class TrayNotification {
 
 	/** fade timeout */
@@ -36,13 +34,14 @@ public class TrayNotification {
 
 	/** widgets */
 	private final Display display;
+
 	private final Shell shell;
 
 	private TrayItem item;
+
 	private ToolTip tip;
 
 	private Listener listener;
-
 
 	/** Create an instance of this class. */
 	public TrayNotification( final Shell shell ) {
@@ -61,23 +60,22 @@ public class TrayNotification {
 
 	/** Open the notification icon and tootip in system tray.
 	 * 
-	 * @param title tooltip title 
-	 * @param message the message to be displayed
-	 */
+	 * @param title tooltip title
+	 * @param message the message to be displayed */
 	public void show( final String title, final String message ) {
 		show( title, message, title );
 	}
 
 	/** Open the notification icon and tootip in system tray.
 	 * 
-	 * @param title tooltip title 
+	 * @param title tooltip title
 	 * @param message the message to be displayed
-	 * @param tooltip tooltip associated with tray icon
-	 */
+	 * @param tooltip tooltip associated with tray icon */
 	public void show( final String title, final String message, final String tooltip ) {
 		display.asyncExec( new Runnable() {
+
 			public void run() {
-				if( ! shell.isDisposed() ) {
+				if( !shell.isDisposed() ) {
 					// init tray item and show tooltip
 					final Tray tray = display.getSystemTray();
 					if( tray == null ) {
@@ -89,9 +87,9 @@ public class TrayNotification {
 						return;
 					}
 
-					item = new TrayItem(tray, SWT.NONE);
-					item.setImage( shell.getImages()[ 0 ] );
-					tip = new ToolTip(shell, SWT.BALLOON | SWT.ICON_INFORMATION);
+					item = new TrayItem( tray, SWT.NONE );
+					item.setImage( shell.getImages()[0] );
+					tip = new ToolTip( shell, SWT.BALLOON | SWT.ICON_INFORMATION );
 					tip.setMessage( message );
 					tip.setText( title );
 
@@ -105,7 +103,7 @@ public class TrayNotification {
 					tip.setVisible( true );
 				}
 			}
-		});
+		} );
 
 		if( timeout > 0 ) {
 			new Thread( new SleeperThread() ).start();
@@ -114,8 +112,7 @@ public class TrayNotification {
 
 	/** Set the listener executed when this item is selected.
 	 * 
-	 * @param listener the listener.
-	 */
+	 * @param listener the listener. */
 	public void setSelectionListener( final Listener listener ) {
 		this.listener = listener;
 	}
@@ -129,17 +126,20 @@ public class TrayNotification {
 			item.dispose();
 	}
 
-
 	private class SleeperThread implements Runnable {
 
 		public void run() {
-			try { Thread.sleep( timeout ); } 	catch( InterruptedException e ) { }
+			try {
+				Thread.sleep( timeout );
+			} catch( InterruptedException e ) {
+			}
 
 			display.asyncExec( new Runnable() {
+
 				public void run() {
 					dispose();
 				}
-			});
+			} );
 		}
 
 	}

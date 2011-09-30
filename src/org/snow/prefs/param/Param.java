@@ -1,6 +1,5 @@
 package org.snow.prefs.param;
 
-
 public class Param {
 
 	public enum ParamType {
@@ -16,7 +15,6 @@ public class Param {
 	private final String desc;
 
 	private final ParamType type;
-
 
 	public Param( final String name, final String defaultValue, final String desc, final ParamType type ) {
 		this.name = name;

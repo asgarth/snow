@@ -13,7 +13,6 @@ import org.snow.window.ApplicationDialog;
 import org.snow.window.footer.WizardFooter;
 import org.snow.window.header.TitleHeader;
 
-
 public class Wizard extends ApplicationDialog {
 
 	/** wizard page list */
@@ -21,16 +20,18 @@ public class Wizard extends ApplicationDialog {
 
 	/** current page index */
 	private int index;
-	
+
 	/** stack layout panel */
 	private TitleHeader header;
+
 	private Composite panel;
+
 	private StackLayout layout;
 
 	/** forward, prev buttons */
 	private Button next;
-	private Button prev;
 
+	private Button prev;
 
 	public Wizard( final Shell parent, final String title, final int width, final int height ) {
 		super( parent, title, width, height );
@@ -56,6 +57,7 @@ public class Wizard extends ApplicationDialog {
 		setFooter( footer );
 		next = footer.getNext();
 		next.addSelectionListener( new SelectionAdapter() {
+
 			public void widgetSelected( SelectionEvent e ) {
 				next();
 			}
@@ -63,6 +65,7 @@ public class Wizard extends ApplicationDialog {
 
 		prev = footer.getPrev();
 		prev.addSelectionListener( new SelectionAdapter() {
+
 			public void widgetSelected( SelectionEvent e ) {
 				prev();
 			}
@@ -86,7 +89,7 @@ public class Wizard extends ApplicationDialog {
 	}
 
 	private void next() {
-		if(index == pages.size() - 1 && next.getText().equals( "Finish" ) ) {
+		if( index == pages.size() - 1 && next.getText().equals( "Finish" ) ) {
 			shell.close();
 			return;
 		}

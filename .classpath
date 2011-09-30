@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/extra/org.eclipse.nebula.cwt_0.9.0.HEAD.jar"/>
+	<classpathentry kind="lib" path="lib/extra/org.eclipse.nebula.widgets.cdatetime_0.14.0.HEAD.jar"/>
+	<classpathentry kind="lib" path="lib/test/junit-4.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/test/org.eclipse.swtbot.swt.finder_2.0.0.595-dev-e36.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.swt_3.7.1.v3738a.jar"/>
+	<classpathentry kind="lib" path="lib/swt-linux32-3.7.1.jar"/>
+	<classpathentry kind="lib" path="lib/binding/org.eclipse.core.databinding_1.4.0.I20110111-0800.jar"/>
+	<classpathentry kind="lib" path="lib/binding/org.eclipse.core.databinding.beans_1.2.100.I20100824-0800.jar"/>
+	<classpathentry kind="lib" path="lib/binding/org.eclipse.core.databinding.observable_1.4.0.I20110222-0800.jar"/>
+	<classpathentry kind="lib" path="lib/binding/org.eclipse.core.databinding.property_1.4.0.I20110222-0800.jar"/>
+	<classpathentry kind="lib" path="lib/binding/org.eclipse.equinox.common_3.6.0.v20110523.jar"/>
+	<classpathentry kind="lib" path="lib/binding/org.eclipse.jface.databinding_1.5.0.I20100907-0800.jar"/>
+	<classpathentry kind="lib" path="lib/binding/com.ibm.icu.base_4.4.2.v20110208.jar"/>
+	<classpathentry kind="lib" path="lib/prefs/simple-xml-2.6.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

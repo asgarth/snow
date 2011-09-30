@@ -11,8 +11,6 @@ import org.snow.prefs.param.AbstractParamCategory;
 import org.snow.prefs.param.Param;
 import org.snow.prefs.param.ParamCategory;
 
-
-
 public class General extends AbstractParamCategory implements ParamCategory {
 
 	public static final String NAME = "General";
@@ -26,23 +24,23 @@ public class General extends AbstractParamCategory implements ParamCategory {
 		params = Collections.unmodifiableList( temp );
 	}
 
-
 	public static General getInstance() {
 		return new General( new HashMap<String, String>(), params );
 	}
 
-	private General( @ElementMap(entry="param", key="name", attribute=true, inline=true) final Map<String, String> map, final List<Param> params ) {
+	private General( @ElementMap( entry = "param", key = "name", attribute = true, inline = true ) final Map<String, String> map,
+			final List<Param> params ) {
 		super( map, params );
 	}
 
-	private General( @ElementMap(entry="param", key="name", attribute=true, inline=true) final Map<String, String> map ) {
+	private General( @ElementMap( entry = "param", key = "name", attribute = true, inline = true ) final Map<String, String> map ) {
 		super( map );
 	}
 
 	public String getName() {
 		return NAME;
 	}
-	
+
 	public List<Param> getParams() {
 		return params;
 	}

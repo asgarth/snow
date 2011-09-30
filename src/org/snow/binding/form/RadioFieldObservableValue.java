@@ -7,7 +7,6 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.snow.form.field.RadioField;
 
-
 public class RadioFieldObservableValue extends AbstractObservableValue {
 
 	private final RadioField field;
@@ -16,20 +15,22 @@ public class RadioFieldObservableValue extends AbstractObservableValue {
 
 	private Object selection = null;
 
-
 	public RadioFieldObservableValue( final RadioField input ) {
 		this.field = input;
 		this.selectionListener = new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
+
+			public void widgetSelected( SelectionEvent e ) {
 				final Object newSelection = field.getValue();
-				fireValueChange(new ValueDiff() {
+				fireValueChange( new ValueDiff() {
+
 					public Object getNewValue() {
 						return newSelection;
 					}
+
 					public Object getOldValue() {
 						return selection;
 					}
-				});
+				} );
 				selection = newSelection;
 			}
 		};
@@ -43,7 +44,7 @@ public class RadioFieldObservableValue extends AbstractObservableValue {
 	}
 
 	@Override
-	protected void doSetValue(Object value) {
+	protected void doSetValue( Object value ) {
 		field.setValue( value.toString() );
 		selection = value;
 	}

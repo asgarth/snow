@@ -2,7 +2,6 @@ package org.snow.prefs;
 
 import java.util.List;
 
-
 public interface PreferenceManager<T extends PreferenceContainer> {
 
 	/** Return the path of the file used to load and store application preferences. */
@@ -16,11 +15,11 @@ public interface PreferenceManager<T extends PreferenceContainer> {
 
 	/** Return the root preference group. */
 	public T root();
-	
+
 	/** Return the preference group with the specified name. */
-	public PreferenceCategory get( String groupName );
+	public PreferenceGroup get( String groupName );
 
 	/** Return the categories list. */
-	public List<PreferenceCategory> getGroups();
+	public List<PreferenceGroup> getGroups();
 
 }

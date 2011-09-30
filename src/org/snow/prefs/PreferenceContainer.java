@@ -2,12 +2,11 @@ package org.snow.prefs;
 
 import java.util.List;
 
-
-/** Interface that should be implemented as a container for different preference groupget. */
+/** Interface that should be implemented as a container for different preference group. */
 public interface PreferenceContainer {
 
-	public PreferenceCategory get( String groupName );
+	public PreferenceGroup get( String groupName );
 
-	public List<PreferenceCategory> getAll();
+	public List<PreferenceGroup> getAll();
 
 }

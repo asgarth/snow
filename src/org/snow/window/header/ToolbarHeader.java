@@ -20,7 +20,6 @@ public class ToolbarHeader extends Header {
 
 	private boolean showText;
 
-
 	public ToolbarHeader( final ApplicationWindow parent ) {
 		this( parent, SWT.NONE, null );
 	}

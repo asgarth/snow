@@ -10,12 +10,9 @@ import org.snow.form.Form;
 import org.snow.form.field.AbstractField;
 import org.snow.form.field.Field;
 
-
 public class DateField extends AbstractField<Date> implements Field<Date> {
 
-	/** widgets */
 	private final CDateTime calendar;
-
 
 	public DateField( final Form parent ) {
 		this( parent, CDT.BORDER | CDT.COMPACT | CDT.DROP_DOWN | CDT.TAB_FIELDS );

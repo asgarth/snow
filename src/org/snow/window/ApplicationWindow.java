@@ -21,17 +21,20 @@ public class ApplicationWindow implements Window {
 
 	/** window dimensions */
 	protected final int width;
+
 	protected final int height;
 
 	/** SWT var */
 	protected final Display display;
+
 	protected final Shell shell;
 
 	/** widgets */
 	protected Composite content;
-	private Header header;
-	private Footer footer;
 
+	private Header header;
+
+	private Footer footer;
 
 	public ApplicationWindow( final Display display, final String title, final int width, final int height ) {
 		this( display, null, WINDOW_STYLE, title, width, height );
@@ -41,7 +44,8 @@ public class ApplicationWindow implements Window {
 		this( parent.getDisplay(), parent, WINDOW_STYLE, title, width, height );
 	}
 
-	protected ApplicationWindow( final Display display, final Shell parent, final int style, final String title, final int width, final int height ) {
+	protected ApplicationWindow( final Display display, final Shell parent, final int style, final String title, final int width,
+			final int height ) {
 		// init UI
 		this.display = display;
 		this.shell = ( parent == null ) ? new Shell( display, style ) : new Shell( parent, style );
@@ -63,19 +67,19 @@ public class ApplicationWindow implements Window {
 		shell.open();
 
 		/** main loop */
-		while ( ! shell.isDisposed() )
-			if ( ! display.readAndDispatch() )
+		while( !shell.isDisposed() )
+			if( !display.readAndDispatch() )
 				display.sleep();
 	}
 
 	public void close() {
 		shell.close();
 	}
-	
+
 	public Display getDisplay() {
 		return display;
 	}
-	
+
 	public Shell getShell() {
 		return shell;
 	}
@@ -90,7 +94,7 @@ public class ApplicationWindow implements Window {
 	}
 
 	public void setContent( final Composite content ) {
-		if( this.content != null && ! this.content.isDisposed() )
+		if( this.content != null && !this.content.isDisposed() )
 			this.content.dispose();
 
 		this.content = content;

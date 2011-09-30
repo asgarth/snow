@@ -9,7 +9,6 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.program.Program;
 import org.eclipse.swt.widgets.Display;
 
-
 /** A class implementing a singleton cache for images and icons. */
 public class ImageCache {
 
@@ -21,7 +20,6 @@ public class ImageCache {
 	/** icon cache */
 	private final Map<Program, Image> iconMap;
 
-
 	private ImageCache() {
 		imageMap = new HashMap<String, Image>();
 		iconMap = new HashMap<Program, Image>();
@@ -31,12 +29,11 @@ public class ImageCache {
 		return instance;
 	}
 
-	/** Returns a new Image object build from input path (searching input as file or resource). 
-	 *  Image received with this method must be disposed after use from the caller.
+	/** Returns a new Image object build from input path (searching input as file or resource). Image received with this method must be
+	 * disposed after use from the caller.
 	 * 
 	 * @param path the image file.
-	 * @return the image associated with specified file.
-	 */
+	 * @return the image associated with specified file. */
 	public static Image loadImageFromFile( final String path ) {
 		if( new File( path ).exists() )
 			return new Image( Display.getDefault(), path );
@@ -44,11 +41,10 @@ public class ImageCache {
 		return new Image( Display.getDefault(), ImageCache.class.getResourceAsStream( path ) );
 	}
 
-	/** Returns a new ImageData object build from input path (searching input as file or resource). 
+	/** Returns a new ImageData object build from input path (searching input as file or resource).
 	 * 
 	 * @param path the image file.
-	 * @return the ImageData object associated with specified file.
-	 */
+	 * @return the ImageData object associated with specified file. */
 	public static ImageData loadImageDataFromFile( final String path ) {
 		if( new File( path ).exists() )
 			return new ImageData( path );
@@ -59,8 +55,7 @@ public class ImageCache {
 	/** Returns the image associated with the specified input file. If image is not found a new image is created, cached and then returned.
 	 * 
 	 * @param path the image file.
-	 * @return the image associated with specified file.
-	 */
+	 * @return the image associated with specified file. */
 	public Image getImage( final String path ) {
 		Image image = imageMap.get( path );
 		if( image == null ) {
@@ -78,12 +73,11 @@ public class ImageCache {
 			image.dispose();
 	}
 
-	/** Returns icon associated with the program used to open the input filename.
-	 * If icon is not found a new image icon is created, cached and then returned.
+	/** Returns icon associated with the program used to open the input filename. If icon is not found a new image icon is created, cached
+	 * and then returned.
 	 * 
 	 * @param filename the image file.
-	 * @return the image associated with specified program.
-	 */
+	 * @return the image associated with specified program. */
 	public Image getIcon( final String filename ) {
 		final Program program = Program.findProgram( getFileExtension( filename ) );
 		return getIcon( program );
@@ -128,7 +122,7 @@ public class ImageCache {
 			image.dispose();
 		iconMap.clear();
 	}
-	
+
 	/** Utility method to extract a filename extension. */
 	private String getFileExtension( final String filename ) {
 		final int dot = filename.lastIndexOf( '.' );

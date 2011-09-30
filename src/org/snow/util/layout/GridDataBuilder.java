@@ -2,7 +2,6 @@ package org.snow.util.layout;
 
 import org.eclipse.swt.layout.GridData;
 
-
 /** A convenience layout data builder for {@link GridData} objects. See GridData documentation for additional details. */
 public class GridDataBuilder {
 
@@ -16,11 +15,10 @@ public class GridDataBuilder {
 
 	private int vspan;
 
-
 	public GridDataBuilder( final int style ) {
-		this( style ,1 ,1 );
+		this( style, 1, 1 );
 	}
-	
+
 	public GridDataBuilder( final int style, final int hspan, final int vspan ) {
 		this.style = style;
 		this.hspan = hspan;
@@ -94,7 +92,8 @@ public class GridDataBuilder {
 			return data;
 		}
 
-		return new GridData( halign, valign, halign == GridData.HORIZONTAL_ALIGN_FILL ? true : false, valign == GridData.VERTICAL_ALIGN_FILL ? true : false, hspan, vspan );
+		return new GridData( halign, valign, halign == GridData.HORIZONTAL_ALIGN_FILL ? true : false,
+				valign == GridData.VERTICAL_ALIGN_FILL ? true : false, hspan, vspan );
 	}
 
 }

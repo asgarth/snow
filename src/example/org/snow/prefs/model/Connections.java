@@ -4,29 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.simpleframework.xml.ElementList;
-import org.snow.prefs.PreferenceCategory;
+import org.snow.prefs.PreferenceGroup;
 
-
-public class Connections implements PreferenceCategory {
+public class Connections implements PreferenceGroup {
 
 	public static final String NAME = "Connections";
 
-	@ElementList(name="servers")
+	@ElementList( name = "servers" )
 	private final List<Server> servers;
-
 
 	public static Connections getInstance() {
 		return new Connections( new ArrayList<Server>() );
 	}
 
-	public Connections( @ElementList(name="servers") final List<Server> servers ) {
+	public Connections( @ElementList( name = "servers" ) final List<Server> servers ) {
 		this.servers = servers;
 	}
 
 	public String getName() {
 		return NAME;
 	}
-	
+
 	public String getTagName() {
 		return NAME.toLowerCase();
 	}
@@ -35,7 +33,7 @@ public class Connections implements PreferenceCategory {
 		for( Server s : servers )
 			if( s.getName().equals( name ) )
 				return s;
-		
+
 		return null;
 	}
 

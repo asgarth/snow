@@ -5,7 +5,6 @@ import org.junit.rules.MethodRule;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
 
-
 public class CaptureScreenshotOnFailure implements MethodRule {
 
 	public final Statement apply( final Statement base, final FrameworkMethod method, Object target ) {
@@ -13,6 +12,7 @@ public class CaptureScreenshotOnFailure implements MethodRule {
 				+ method.getName() + ".png";
 
 		return new Statement() {
+
 			@Override
 			public void evaluate() throws Throwable {
 				try {

@@ -9,8 +9,6 @@ import org.snow.form.field.CheckBoxField;
 import org.snow.form.field.Field;
 import org.snow.form.field.RadioField;
 
-
-
 public abstract class FieldObservableFactory {
 
 	public static IObservableValue getObservableValue( final Field field ) {

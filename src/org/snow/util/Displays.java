@@ -12,12 +12,11 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 
-
 /** Utility class with common method on display and screen resolution. */
 public class Displays {
 
-	private Displays() { }
-
+	private Displays() {
+	}
 
 	/** Check if required window resolution is allowed on current display, otherwise an allowed dimension is returned. */
 	public static Point computeAllowedSize( final Display display, final int width, final int height ) {
@@ -35,11 +34,11 @@ public class Displays {
 	public static Point computeRelativeSize( final Display display, final int hperc, final int vperc ) {
 		if( hperc < 0 || hperc > 100 || vperc < 0 || vperc > 100 )
 			throw new IllegalArgumentException( "Invalid percetage specified. Allowed value between 0 and 100" );
-		
+
 		final Rectangle rect = display.getBounds();
 		int width = rect.width / 100 * hperc;
 		int height = rect.height / 100 * vperc;
-		
+
 		return computeAllowedSize( display, width, height );
 	}
 
@@ -76,7 +75,7 @@ public class Displays {
 
 	/** Copy the file at specified path into the clipboard. */
 	public static void copyToClipboard( final Display display, final String path ) {
-		if( ! new File( path ).exists() )
+		if( !new File( path ).exists() )
 			throw new IllegalArgumentException( "Input file path not found" );
 
 		final Clipboard clipboard = new Clipboard( display );

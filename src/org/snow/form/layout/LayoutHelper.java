@@ -2,8 +2,7 @@ package org.snow.form.layout;
 
 import org.eclipse.swt.widgets.Layout;
 
-
-public interface FormLayoutHelper<T> {
+public interface LayoutHelper<T> {
 
 	public Layout getLayout();
 

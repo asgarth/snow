@@ -6,14 +6,11 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Control;
 import org.snow.form.Form;
 
+public class ComboField extends AbstractStringField {
 
-public class ComboField extends AbstractField<String> implements Field<String> {
-
-	/** widgets */
 	private final Combo combo;
 
 	private String value;
-
 
 	public ComboField( final Form parent, final String caption ) {
 		this( parent );
@@ -33,18 +30,14 @@ public class ComboField extends AbstractField<String> implements Field<String> {
 		this.value = value;
 	}
 
-	public boolean isEmpty() {
-		return value == null || value.equals( "" );
-	}
-
 	public Control getControl() {
 		return combo;
 	}
-	
+
 	public void addSelectionListener( final SelectionListener listener ) {
 		combo.addSelectionListener( listener );
 	}
-	
+
 	public void removeSelectionListener( final SelectionListener listener ) {
 		combo.removeSelectionListener( listener );
 	}

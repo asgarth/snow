@@ -1,8 +1,6 @@
 package org.snow.action;
 
-
-
-public interface BackgroundAction extends Action {
+public interface AsyncAction extends Action, Runnable {
 
 	public void cancel();
 

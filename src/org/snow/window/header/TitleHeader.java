@@ -16,12 +16,13 @@ import org.snow.window.ApplicationWindow;
 public class TitleHeader extends Header {
 
 	public static final int HEIGHT = 56;
+
 	public static final int IMAGE_SIZE = 48;
 
 	/** widgets */
 	private final Label label;
-	private final Label text;
 
+	private final Label text;
 
 	public TitleHeader( final ApplicationWindow parent, final String message ) {
 		this( parent, message, null );
@@ -30,9 +31,9 @@ public class TitleHeader extends Header {
 	public TitleHeader( final ApplicationWindow parent, final String message, final Image image ) {
 		super( parent, SWT.NONE );
 		final Display display = parent.getDisplay();
-		
+
 		final Label separator = new Label( this, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT );
-		
+
 		/** init header */
 		setLayout( new FormLayout() );
 		setBackground( display.getSystemColor( SWT.COLOR_WHITE ) );
@@ -53,8 +54,9 @@ public class TitleHeader extends Header {
 		labelData.right = new FormAttachment( 0, hOffset );
 		label.setLayoutData( labelData );
 		label.addDisposeListener( new DisposeListener() {
+
 			public void widgetDisposed( DisposeEvent e ) {
-				if( label.getImage() != null && ! label.getImage().isDisposed() )
+				if( label.getImage() != null && !label.getImage().isDisposed() )
 					label.getImage().dispose();
 			}
 		} );
@@ -73,8 +75,9 @@ public class TitleHeader extends Header {
 		textData.right = new FormAttachment( 100, -3 );
 		text.setLayoutData( textData );
 		text.addDisposeListener( new DisposeListener() {
+
 			public void widgetDisposed( DisposeEvent arg0 ) {
-				if( font != null && ! font.isDisposed() )
+				if( font != null && !font.isDisposed() )
 					font.dispose();
 			}
 		} );

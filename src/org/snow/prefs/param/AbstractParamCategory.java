@@ -6,14 +6,13 @@ import java.util.Map.Entry;
 
 import org.simpleframework.xml.ElementMap;
 
-
 public abstract class AbstractParamCategory implements ParamCategory {
 
-	@ElementMap(entry="param", key="name", attribute=true, inline=true)
+	@ElementMap( entry = "param", key = "name", attribute = true, inline = true )
 	private final Map<String, String> map;
 
-
-	public AbstractParamCategory( @ElementMap(entry="param", key="name", attribute=true, inline=true) final Map<String, String> map ) {
+	public AbstractParamCategory(
+			@ElementMap( entry = "param", key = "name", attribute = true, inline = true ) final Map<String, String> map ) {
 		this.map = map;
 	}
 
@@ -27,7 +26,7 @@ public abstract class AbstractParamCategory implements ParamCategory {
 		final String value = map.get( key );
 		return value == null ? "" : value;
 	}
-	
+
 	public boolean getAsBoolean( final String key ) {
 		return Boolean.parseBoolean( get( key ) );
 	}
@@ -35,14 +34,14 @@ public abstract class AbstractParamCategory implements ParamCategory {
 	public void put( final String key, final String value ) {
 		map.put( key, value );
 	}
-	
+
 	public void putAll( final Map<String, String> values ) {
 		for( Entry<String, String> e : values.entrySet() )
 			put( e.getKey(), e.getValue() );
 	}
-	
+
 	public String getTagName() {
 		return getName().toLowerCase();
 	}
-	
+
 }

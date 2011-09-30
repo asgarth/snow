@@ -6,10 +6,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import net.miginfocom.swt.MigLayout;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -19,16 +19,15 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.snow.prefs.param.Param;
-import org.snow.prefs.param.ParamCategory;
 import org.snow.prefs.param.Param.ParamType;
+import org.snow.prefs.param.ParamCategory;
 import org.snow.util.cache.ImageCache;
 
-
-public class ParamCategoryPanel implements PreferencePanel {
+public class ParamPrefencePanel implements PreferencePanel {
 
 	private final ParamCategory prefGroup;
 
-	private final MigLayout layout;
+	private final GridLayout layout;
 
 	private final Image image;
 
@@ -36,8 +35,7 @@ public class ParamCategoryPanel implements PreferencePanel {
 
 	private List<Control> controls;
 
-
-	public ParamCategoryPanel( final ParamCategory prefGroup, final MigLayout layout, final String image ) {
+	public ParamPrefencePanel( final ParamCategory prefGroup, final GridLayout layout, final String image ) {
 		this.prefGroup = prefGroup;
 		this.layout = layout;
 		this.image = image != null ? ImageCache.getInstance().getImage( image ) : null;
@@ -57,15 +55,16 @@ public class ParamCategoryPanel implements PreferencePanel {
 				label.setText( param.getDesc() );
 				final Text text = new Text( group, SWT.SINGLE | SWT.BORDER );
 				text.setText( prefGroup.get( param.getName() ) );
-				text.setLayoutData( "growx" );
+				text.setLayoutData( new GridData( GridData.HORIZONTAL_ALIGN_FILL ) );
 				controls.add( text );
 
 				if( param.getType() == ParamType.NUMBER ) {
-					text.addListener( SWT.Verify, new Listener () {
+					text.addListener( SWT.Verify, new Listener() {
+
 						public void handleEvent( final Event e ) {
 							final char[] c = e.text.toCharArray();
 							for( int i = 0; i < c.length; i++ ) {
-								if( ! Character.isDigit( c[i] ) ) {
+								if( !Character.isDigit( c[i] ) ) {
 									e.doit = false;
 									return;
 								}
@@ -81,7 +80,7 @@ public class ParamCategoryPanel implements PreferencePanel {
 				final Button button = new Button( group, SWT.CHECK );
 				button.setText( param.getDesc() );
 				button.setSelection( prefGroup.getAsBoolean( param.getName() ) );
-				button.setLayoutData( "span, wrap" );
+				button.setLayoutData( new GridData( GridData.HORIZONTAL_ALIGN_END ) );
 				controls.add( button );
 
 				continue;
@@ -101,9 +100,9 @@ public class ParamCategoryPanel implements PreferencePanel {
 			final Control control = cIterator.next();
 
 			if( control instanceof Button )
-				map.put( param.getName(), String.valueOf( ( ( Button )control ).getSelection() ) );
+				map.put( param.getName(), String.valueOf( ( ( Button ) control ).getSelection() ) );
 			else if( control instanceof Text )
-				map.put( param.getName(), String.valueOf( ( ( Text )control ).getText() ) );
+				map.put( param.getName(), String.valueOf( ( ( Text ) control ).getText() ) );
 		}
 
 		return map;

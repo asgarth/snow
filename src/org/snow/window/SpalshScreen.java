@@ -18,11 +18,12 @@ public class SpalshScreen implements Window {
 
 	/** SWT var */
 	private final Display display;
+
 	private final Shell shell;
 
 	private final Label label;
-	private final ProgressBar bar;
 
+	private final ProgressBar bar;
 
 	public SpalshScreen( final Display display, final String imagePath ) {
 		this( display, imagePath, 100 );
@@ -37,12 +38,13 @@ public class SpalshScreen implements Window {
 		label = new Label( shell, SWT.NONE );
 		label.setImage( new Image( display, imagePath ) );
 		final FormData labelData = new FormData();
-		labelData.right = new FormAttachment(100, 0);
-		labelData.bottom = new FormAttachment(100, 0);
-		label.setLayoutData(labelData);
+		labelData.right = new FormAttachment( 100, 0 );
+		labelData.bottom = new FormAttachment( 100, 0 );
+		label.setLayoutData( labelData );
 		label.addDisposeListener( new DisposeListener() {
+
 			public void widgetDisposed( DisposeEvent e ) {
-				if( label.getImage() != null && ! label.getImage().isDisposed() )
+				if( label.getImage() != null && !label.getImage().isDisposed() )
 					label.getImage().dispose();
 			}
 		} );
@@ -50,11 +52,11 @@ public class SpalshScreen implements Window {
 		bar = new ProgressBar( shell, SWT.HORIZONTAL | SWT.SMOOTH );
 		bar.setMaximum( totalProgress );
 		final FormData progressData = new FormData();
-		progressData.left = new FormAttachment(0, 5);
-		progressData.right = new FormAttachment(100, -5);
-		progressData.top = new FormAttachment(100, -17);
-		progressData.bottom = new FormAttachment(100, -4);
-		bar.setLayoutData(progressData);
+		progressData.left = new FormAttachment( 0, 5 );
+		progressData.right = new FormAttachment( 100, -5 );
+		progressData.top = new FormAttachment( 100, -17 );
+		progressData.bottom = new FormAttachment( 100, -4 );
+		bar.setLayoutData( progressData );
 		bar.moveAbove( label );
 
 		shell.pack();
@@ -65,7 +67,7 @@ public class SpalshScreen implements Window {
 	}
 
 	public void setContent( Composite content ) {
-		throw new UnsupportedOperationException( "Operation not supported on splash screen.");
+		throw new UnsupportedOperationException( "Operation not supported on splash screen." );
 	}
 
 	public void setTitle( final String title ) {
@@ -90,8 +92,8 @@ public class SpalshScreen implements Window {
 		shell.open();
 
 		/** main loop */
-		while( ! shell.isDisposed() )
-			if( ! display.readAndDispatch() )
+		while( !shell.isDisposed() )
+			if( !display.readAndDispatch() )
 				display.sleep();
 	}
 

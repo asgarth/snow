@@ -21,7 +21,6 @@ public class PreferenceDialog extends ApplicationDialog {
 
 	private Action saveAction;
 
-
 	public PreferenceDialog( final Shell parent, final String title ) {
 		this( parent, title, parent.getImages() );
 	}
@@ -53,6 +52,7 @@ public class PreferenceDialog extends ApplicationDialog {
 		/** add preferences panels */
 		for( final PreferencePanel panel : panels ) {
 			header.add( panel.getImage(), panel.getName(), new SelectionAdapter() {
+
 				public void widgetSelected( SelectionEvent e ) {
 					layout.topControl = panel.build( composite );
 					composite.layout();
@@ -67,6 +67,7 @@ public class PreferenceDialog extends ApplicationDialog {
 		setFooter( footer );
 		final Button ok = footer.getOk();
 		ok.addSelectionListener( new SelectionAdapter() {
+
 			public void widgetSelected( SelectionEvent e ) {
 				if( saveAction != null )
 					saveAction.execute();
