@@ -11,8 +11,8 @@ public class Constants {
 	public static final String DESKTOP = System.getProperty( "user.home" ) + "/Desktop";
 
 	/** common resources */
-	public static final String CURSOR_IMAGE_HAND = "./images/hand.png";
-	public static final String FOLDER_ICON_IMAGE = "./images/folder.png";
-	public static final String UNKNOWN_ICON_IMAGE = "./images/unknown.png";
+	public static final String CURSOR_IMAGE_HAND = "/images/hand.png";
+	public static final String FOLDER_ICON_IMAGE = "/images/folder.png";
+	public static final String UNKNOWN_ICON_IMAGE = "/images/unknown.png";
 
 }
