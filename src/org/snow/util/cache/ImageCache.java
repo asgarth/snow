@@ -8,6 +8,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.program.Program;
 import org.eclipse.swt.widgets.Display;
+import org.snow.util.Constants;
 
 /** A class implementing a singleton cache for images and icons. */
 public class ImageCache {
@@ -96,7 +97,7 @@ public class ImageCache {
 
 		return image;
 	}
-
+	
 	/** Dispose the resource cached with the input filename. */
 	public void removeIcon( final String filename ) {
 		removeIcon( Program.findProgram( getFileExtension( filename ) ) );
@@ -110,6 +111,16 @@ public class ImageCache {
 		final Image image = iconMap.remove( program );
 		if( image != null )
 			image.dispose();
+	}
+	
+	/** Returns an image that can be associated to filesystem folders. */
+	public Image getFolderIcon() {
+		return getImage( Constants.FOLDER_ICON_IMAGE );
+	}
+	
+	/** Returns an icon that can be associated to file with unknown extension. */
+	public Image getUnknownIcon() {
+		return getImage( Constants.UNKNOWN_ICON_IMAGE );
 	}
 
 	/** Disposes all cached resources. */

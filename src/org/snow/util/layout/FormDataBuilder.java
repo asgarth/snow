@@ -11,6 +11,10 @@ public class FormDataBuilder {
 
 	public FormDataBuilder() {
 		data = new FormData();
+		data.top = new FormAttachment( 0, 0 );
+		data.bottom = new FormAttachment( 100, 0 );
+		data.left = new FormAttachment( 0, 0 );
+		data.right = new FormAttachment( 100, 0 );
 	}
 
 	public FormDataBuilder top( final int numerator, final int offset ) {

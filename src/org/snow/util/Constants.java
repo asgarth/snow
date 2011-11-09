@@ -13,8 +13,7 @@ public class Constants {
 
 	/** common resources */
 	public static final String CURSOR_IMAGE_HAND = "./resource/image/hand.png";
-
-	/** common resources */
 	public static final String FOLDER_ICON_IMAGE = "./resource/image/folder.png";
+	public static final String UNKNOWN_ICON_IMAGE = "./resource/image/unknown.png";
 
 }
