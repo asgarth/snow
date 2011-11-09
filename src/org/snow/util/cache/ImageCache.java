@@ -1,6 +1,7 @@
 package org.snow.util.cache;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +40,7 @@ public class ImageCache {
 		if( new File( path ).exists() )
 			return new Image( Display.getDefault(), path );
 
-		return new Image( Display.getDefault(), ImageCache.class.getResourceAsStream( path ) );
+		return new Image( Display.getDefault(), getResourceAsStream( path ) );
 	}
 
 	/** Returns a new ImageData object build from input path (searching input as file or resource).
@@ -50,7 +51,14 @@ public class ImageCache {
 		if( new File( path ).exists() )
 			return new ImageData( path );
 
-		return new ImageData( ImageCache.class.getResourceAsStream( path ) );
+		return new ImageData( getResourceAsStream( path ) );
+	}
+
+	private static InputStream getResourceAsStream( final String resource ) {
+		if( resource.startsWith( "." ) )
+			return ImageCache.class.getResourceAsStream( resource.substring( 1 ) );
+
+		return ImageCache.class.getResourceAsStream( resource );
 	}
 
 	/** Returns the image associated with the specified input file. If image is not found a new image is created, cached and then returned.
@@ -97,7 +105,7 @@ public class ImageCache {
 
 		return image;
 	}
-	
+
 	/** Dispose the resource cached with the input filename. */
 	public void removeIcon( final String filename ) {
 		removeIcon( Program.findProgram( getFileExtension( filename ) ) );
@@ -112,12 +120,12 @@ public class ImageCache {
 		if( image != null )
 			image.dispose();
 	}
-	
+
 	/** Returns an image that can be associated to filesystem folders. */
 	public Image getFolderIcon() {
 		return getImage( Constants.FOLDER_ICON_IMAGE );
 	}
-	
+
 	/** Returns an icon that can be associated to file with unknown extension. */
 	public Image getUnknownIcon() {
 		return getImage( Constants.UNKNOWN_ICON_IMAGE );
