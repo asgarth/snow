@@ -13,7 +13,7 @@ public class ApplicationWindowExample {
 	public static void main( final String[] args ) {
 		final Display display = new Display();
 		final ApplicationWindow app = new ApplicationWindow( display, "Application Window Example", 800, 600 );
-		app.setHeader( new TitleHeader( app, "Title" ) );
+		app.setHeader( new TitleHeader( app, "Title", "./resources/example/logo.png" ) );
 
 		final Form form = new Form( app.getShell() );
 		form.setFormLayoutHelper( new GridLayoutHelper() );

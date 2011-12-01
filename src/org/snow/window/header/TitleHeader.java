@@ -23,16 +23,14 @@ public class TitleHeader extends Header {
 	private final Label label;
 
 	private final Label text;
+	
+	private final Label separator;
 
 	public TitleHeader( final ApplicationWindow parent, final String message ) {
-		this( parent, message, null );
-	}
-
-	public TitleHeader( final ApplicationWindow parent, final String message, final Image image ) {
 		super( parent, SWT.NONE );
 		final Display display = parent.getDisplay();
 
-		final Label separator = new Label( this, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT );
+		separator = new Label( this, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT );
 
 		/** init header */
 		setLayout( new FormLayout() );
@@ -41,26 +39,17 @@ public class TitleHeader extends Header {
 		/** init image label */
 		label = new Label( this, SWT.NONE );
 		label.setBackground( display.getSystemColor( SWT.COLOR_WHITE ) );
-		if( image != null )
-			label.setImage( image );
-
+		
 		final int vOffset = ( HEIGHT - IMAGE_SIZE ) / 2 - 1;
-		final int hOffset = image != null ? IMAGE_SIZE + 3 : 10;
+		final int hOffset = 10;
 
 		final FormData labelData = new FormData();
 		labelData.top = new FormAttachment( this, vOffset );
 		labelData.bottom = new FormAttachment( separator, -vOffset );
-		labelData.left = new FormAttachment( 0, 3 );
+		labelData.left = new FormAttachment( 0, 5 );
 		labelData.right = new FormAttachment( 0, hOffset );
 		label.setLayoutData( labelData );
-		label.addDisposeListener( new DisposeListener() {
-
-			public void widgetDisposed( DisposeEvent e ) {
-				if( label.getImage() != null && !label.getImage().isDisposed() )
-					label.getImage().dispose();
-			}
-		} );
-
+		
 		/** init header message */
 		text = new Label( this, SWT.NONE );
 		text.setBackground( display.getSystemColor( SWT.COLOR_WHITE ) );
@@ -75,8 +64,7 @@ public class TitleHeader extends Header {
 		textData.right = new FormAttachment( 100, -3 );
 		text.setLayoutData( textData );
 		text.addDisposeListener( new DisposeListener() {
-
-			public void widgetDisposed( DisposeEvent arg0 ) {
+			public void widgetDisposed( DisposeEvent e ) {
 				if( font != null && !font.isDisposed() )
 					font.dispose();
 			}
@@ -88,6 +76,36 @@ public class TitleHeader extends Header {
 		sepData.left = new FormAttachment( 0, 0 );
 		sepData.right = new FormAttachment( 100, 0 );
 		separator.setLayoutData( sepData );
+	}
+
+	public TitleHeader( final ApplicationWindow parent, final String message, final String image ) {
+		this( parent, message, new Image( parent.getDisplay(), image ) );
+		
+		label.addDisposeListener( new DisposeListener() {
+			public void widgetDisposed( DisposeEvent e ) {
+				if( label.getImage() != null && !label.getImage().isDisposed() )
+					label.getImage().dispose();
+			}
+		} );
+	}
+	
+	public TitleHeader( final ApplicationWindow parent, final String message, final Image image ) {
+		this( parent, message );
+		
+		if( image == null )
+			throw new IllegalArgumentException( "NULL image received" );
+		
+		label.setImage( image );
+
+		final int vOffset = ( HEIGHT - IMAGE_SIZE ) / 2 - 1;
+		final int hOffset = IMAGE_SIZE + 3;
+
+		final FormData labelData = new FormData();
+		labelData.top = new FormAttachment( this, vOffset );
+		labelData.bottom = new FormAttachment( separator, -vOffset );
+		labelData.left = new FormAttachment( 0, 5 );
+		labelData.right = new FormAttachment( 0, hOffset );
+		label.setLayoutData( labelData );
 	}
 
 	public String getTitle() {
