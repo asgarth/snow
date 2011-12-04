@@ -12,7 +12,7 @@ public class ApplicationWindowExample {
 
 	public static void main( final String[] args ) {
 		final Display display = new Display();
-		final ApplicationWindow app = new ApplicationWindow( display, "Application Window Example", 800, 600 );
+		final ApplicationWindow app = new ApplicationWindow( display, "Application Window Example", 600, 380 );
 		app.setHeader( new TitleHeader( app, "Title", "./resources/example/logo.png" ) );
 
 		final Form form = new Form( app.getShell() );
