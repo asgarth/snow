@@ -1,5 +1,7 @@
 package example.org.snow.binding;
 
+import java.util.Date;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
@@ -10,10 +12,12 @@ import org.eclipse.swt.widgets.Shell;
 import org.snow.binding.form.BindingForm;
 import org.snow.binding.window.BindingApplicationDialog;
 import org.snow.form.field.CheckBoxField;
+import org.snow.form.field.DateField;
 import org.snow.form.field.RadioField;
 import org.snow.form.field.TextField;
 import org.snow.form.layout.GridLayoutHelper;
 import org.snow.window.footer.StandardFooter;
+import org.snow.window.header.TitleHeader;
 
 public class DataBindingDialogExample {
 
@@ -26,7 +30,8 @@ public class DataBindingDialogExample {
 	public void run() {
 		final Display display = new Display();
 
-		final BindingApplicationDialog dialog = new BindingApplicationDialog( new Shell( display ), "Binding Dialog Example", 400, 220 );
+		final BindingApplicationDialog dialog = new BindingApplicationDialog( new Shell( display ), "Binding Dialog Example", 460, 280 );
+		dialog.setHeader( new TitleHeader( dialog, "Binding Dialog Example", "./resources/example/logo.png" ) );
 
 		dialog.openWithBinding( new Runnable() {
 
@@ -39,21 +44,21 @@ public class DataBindingDialogExample {
 				final BindingForm<Person> form = new BindingForm<Person>( main, person );
 				form.setFormLayoutHelper( new GridLayoutHelper() );
 
-				final TextField name = new TextField( form );
-				name.setCaption( "Name" );
+				final TextField name = new TextField( form, "Name" );
 				form.addAndBind( "name", name, "name" );
 
-				final TextField surname = new TextField( form );
-				surname.setCaption( "Surname" );
+				final TextField surname = new TextField( form, "Surname" );
 				form.addAndBind( "surname", surname, "surname" );
 
 				final RadioField sex = new RadioField( form, new String[] { "M", "F" } );
-				sex.setCaption( "Sesso" );
+				sex.setCaption( "Radio Field" );
 				form.addAndBind( "sex", sex, "sex" );
 
-				final CheckBoxField check = new CheckBoxField( form, "Selected" );
-				check.setCaption( "Check" );
+				final CheckBoxField check = new CheckBoxField( form, "Check" );
 				form.addAndBind( "check", check, "check" );
+				
+				final DateField date = new DateField( form, "Date" );
+				form.addAndBind( "date", date, "date" );
 
 				/** init footer */
 				final StandardFooter footer = new StandardFooter( dialog, "OK", "Cancel" );
@@ -66,6 +71,7 @@ public class DataBindingDialogExample {
 						System.out.println( "surname: " + person.getSurname() );
 						System.out.println( "sex: " + person.getSex() );
 						System.out.println( "check: " + person.getCheck() );
+						System.out.println( "date: " + person.getDate() );
 
 						/** close */
 						dialog.close();
@@ -95,12 +101,15 @@ public class DataBindingDialogExample {
 		private String sex;
 
 		private String check;
+		
+		private Date date;
 
 		public Person( final String name, final String surname ) {
 			this.name = name;
 			this.surname = surname;
 			this.sex = "-";
 			this.check = "-";
+			this.date = new Date();
 		}
 
 		public String getName() {
@@ -133,6 +142,14 @@ public class DataBindingDialogExample {
 
 		public void setCheck( String check ) {
 			this.check = check;
+		}
+		
+		public Date getDate() {
+			return date;
+		}
+		
+		public void setDate( Date date ) {
+			this.date = date;
 		}
 
 	}

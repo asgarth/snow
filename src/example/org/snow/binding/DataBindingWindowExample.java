@@ -1,5 +1,7 @@
 package example.org.snow.binding;
 
+import java.util.Date;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
@@ -8,10 +10,13 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.snow.binding.form.BindingForm;
 import org.snow.binding.window.BindingApplicationWindow;
+import org.snow.form.field.CheckBoxField;
+import org.snow.form.field.DateField;
 import org.snow.form.field.RadioField;
 import org.snow.form.field.TextField;
 import org.snow.form.layout.GridLayoutHelper;
 import org.snow.window.footer.StandardFooter;
+import org.snow.window.header.TitleHeader;
 
 public class DataBindingWindowExample {
 
@@ -24,8 +29,9 @@ public class DataBindingWindowExample {
 	public void run() {
 		final Display display = new Display();
 
-		final BindingApplicationWindow app = new BindingApplicationWindow( display, "Binding Window Example", 400, 180 );
-
+		final BindingApplicationWindow app = new BindingApplicationWindow( display, "Binding Window Example", 460, 280 );
+		app.setHeader( new TitleHeader( app, "Window Dialog Example", "./resources/example/logo.png" ) );
+		
 		app.openWithBinding( new Runnable() {
 
 			@Override
@@ -37,17 +43,21 @@ public class DataBindingWindowExample {
 				final BindingForm<Person> form = new BindingForm<Person>( main, person );
 				form.setFormLayoutHelper( new GridLayoutHelper() );
 
-				final TextField name = new TextField( form );
-				name.setCaption( "Name" );
+				final TextField name = new TextField( form, "Name" );
 				form.addAndBind( "name", name, "name" );
 
-				final TextField surname = new TextField( form );
-				surname.setCaption( "Surname" );
+				final TextField surname = new TextField( form, "Surname" );
 				form.addAndBind( "surname", surname, "surname" );
 
 				final RadioField sex = new RadioField( form, new String[] { "M", "F" } );
-				sex.setCaption( "Sesso" );
+				sex.setCaption( "Radio Field" );
 				form.addAndBind( "sex", sex, "sex" );
+
+				final CheckBoxField check = new CheckBoxField( form, "Check" );
+				form.addAndBind( "check", check, "check" );
+				
+				final DateField date = new DateField( form, "Date" );
+				form.addAndBind( "date", date, "date" );
 
 				/** init footer */
 				final StandardFooter footer = new StandardFooter( app, "OK", "Cancel" );
@@ -59,6 +69,8 @@ public class DataBindingWindowExample {
 						System.out.println( "name: " + person.getName() );
 						System.out.println( "surname: " + person.getSurname() );
 						System.out.println( "sex: " + person.getSex() );
+						System.out.println( "check: " + person.getCheck() );
+						System.out.println( "date: " + person.getDate() );
 
 						/** close */
 						app.close();
@@ -73,6 +85,7 @@ public class DataBindingWindowExample {
 	public static void main( String[] args ) {
 		final Person person = new Person( "xxx", "yyy" );
 		person.setSex( "F" );
+		person.setCheck( "true" );
 
 		final DataBindingWindowExample test = new DataBindingWindowExample( person );
 		test.run();
@@ -86,10 +99,16 @@ public class DataBindingWindowExample {
 
 		private String sex;
 
+		private String check;
+		
+		private Date date;
+
 		public Person( final String name, final String surname ) {
 			this.name = name;
 			this.surname = surname;
 			this.sex = "-";
+			this.check = "-";
+			this.date = new Date();
 		}
 
 		public String getName() {
@@ -114,6 +133,22 @@ public class DataBindingWindowExample {
 
 		public void setSex( String sex ) {
 			this.sex = sex;
+		}
+
+		public String getCheck() {
+			return check;
+		}
+
+		public void setCheck( String check ) {
+			this.check = check;
+		}
+		
+		public Date getDate() {
+			return date;
+		}
+		
+		public void setDate( Date date ) {
+			this.date = date;
 		}
 
 	}

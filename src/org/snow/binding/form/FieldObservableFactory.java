@@ -3,9 +3,8 @@ package org.snow.binding.form;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.swt.SWT;
-import org.snow.extra.DateField;
-import org.snow.extra.DateFieldObservableValue;
 import org.snow.form.field.CheckBoxField;
+import org.snow.form.field.DateField;
 import org.snow.form.field.Field;
 import org.snow.form.field.RadioField;
 

@@ -1,4 +1,4 @@
-package org.snow.extra;
+package org.snow.binding.form;
 
 import java.util.Date;
 
@@ -7,6 +7,7 @@ import org.eclipse.core.databinding.observable.value.ValueDiff;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.snow.form.field.DateField;
 
 public class DateFieldObservableValue extends AbstractObservableValue {
 

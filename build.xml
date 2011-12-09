@@ -34,7 +34,6 @@
 				<include name="org/**/*.class" />
 				<exclude name="org/snow/binding/**/*.class" />
 				<exclude name="org/snow/prefs/**/*.class" />
-				<exclude name="org/snow/extra/**/*.class" />
 			</fileset>
 			<fileset dir="${resource}" includes="**/*.png" />
 
@@ -69,22 +68,6 @@
 		<jar destfile="${build.jars}/${projname}-prefs-${version}.jar">
 			<fileset dir="${build.classes}">
 				<include name="org/snow/prefs/**/*.class" />
-			</fileset>
-			<manifest>
-				<attribute name="Specification-Title" value="${name}" />
-				<attribute name="Specification-Version" value="${version}" />
-				<attribute name="Implementation-Title" value="${name}" />
-				<attribute name="Implementation-Version" value="${version}" />
-			</manifest>
-		</jar>
-	</target>
-
-	<target name="jar-extra" depends="compile">
-		<mkdir dir="${build.jars}" />
-
-		<jar destfile="${build.jars}/${projname}-extra-${version}.jar">
-			<fileset dir="${build.classes}">
-				<include name="org/snow/extra/**/*.class" />
 			</fileset>
 			<manifest>
 				<attribute name="Specification-Title" value="${name}" />
@@ -166,7 +149,7 @@
 	<delete file="${build.release}/${projname}-${version}-example.zip" />
 </target>
 
-<target name="build" depends="clean, compile, jar, jar-binding, jar-prefs, jar-extra, jar-all" />
+<target name="build" depends="clean, compile, jar, jar-binding, jar-prefs, jar-all" />
 
 <target name="release" depends="release.main, release.src, release.example" />
 

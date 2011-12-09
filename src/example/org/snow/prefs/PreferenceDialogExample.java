@@ -29,11 +29,14 @@ public class PreferenceDialogExample {
 
 		final PreferenceDialog dialog = new PreferenceDialog( new Shell( display ), "prefs" );
 		dialog.setSaveAction( new Action() {
-
 			public boolean execute() {
 				manager.root().getGeneral().putAll( general.getValues() );
 
 				manager.save();
+				return true;
+			}
+			
+			public boolean isSuccess() {
 				return true;
 			}
 		} );
