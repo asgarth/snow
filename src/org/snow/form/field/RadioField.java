@@ -1,6 +1,7 @@
 package org.snow.form.field;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
@@ -110,6 +111,14 @@ public class RadioField extends AbstractStringField {
 	public void removeSelectionListener( final SelectionListener listener ) {
 		for( Button b : buttons )
 			b.removeSelectionListener( listener );
+	}
+	
+	public void addModifyListener( final ModifyListener listener ) {
+		throw new UnsupportedOperationException( "Cannot attach a modify listener to this object" );
+	}
+
+	public void removeModifyListener( final ModifyListener listener ) {
+		throw new UnsupportedOperationException( "Cannot remove a modify listener from this object" );
 	}
 
 }

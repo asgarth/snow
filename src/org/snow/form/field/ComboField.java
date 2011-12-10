@@ -1,6 +1,7 @@
 package org.snow.form.field;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Control;
@@ -40,6 +41,14 @@ public class ComboField extends AbstractStringField {
 
 	public void removeSelectionListener( final SelectionListener listener ) {
 		combo.removeSelectionListener( listener );
+	}
+	
+	public void addModifyListener( final ModifyListener listener ) {
+		combo.addModifyListener( listener );
+	}
+
+	public void removeModifyListener( final ModifyListener listener ) {
+		combo.removeModifyListener( listener );
 	}
 
 }

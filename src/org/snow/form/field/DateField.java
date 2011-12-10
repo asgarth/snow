@@ -3,6 +3,7 @@ package org.snow.form.field;
 import java.util.Date;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DateTime;
@@ -13,22 +14,17 @@ import com.ibm.icu.util.Calendar;
 public class DateField extends AbstractField<Date> implements Field<Date> {
 
 	public static final int DATE_STYLE = SWT.DATE | SWT.DROP_DOWN | SWT.BORDER;
-	
+
 	private final DateTime calendar;
 
 
 	public DateField( final Form parent, final String caption ) {
-		this( parent, caption, DATE_STYLE );
-	}
-
-	public DateField( final Form parent, final String caption, final int style ) {
 		super( parent );
 
-		calendar = new DateTime( parent, style );
+		calendar = new DateTime( parent, DATE_STYLE );
+		calendar.setTime( 0, 0, 0 );
+
 		setCaption( caption );
-		
-		if( style == DATE_STYLE )
-			calendar.setTime( 0, 0, 0 );
 	}
 
 	public Date getValue() {
@@ -62,4 +58,12 @@ public class DateField extends AbstractField<Date> implements Field<Date> {
 		calendar.removeSelectionListener( listener );
 	}
 
+	public void addModifyListener( final ModifyListener listener ) {
+		throw new UnsupportedOperationException( "Cannot attach a modify listener to this object" );
+	}
+
+	public void removeModifyListener( final ModifyListener listener ) {
+		throw new UnsupportedOperationException( "Cannot remove a modify listener from this object" );
+	}
+	
 }

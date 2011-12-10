@@ -1,6 +1,7 @@
 package org.snow.form.field;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.events.VerifyListener;
@@ -74,6 +75,14 @@ public class LargeTextField extends AbstractStringField {
 
 	public void removeSelectionListener( final SelectionListener listener ) {
 		text.removeSelectionListener( listener );
+	}
+
+	public void addModifyListener( final ModifyListener listener ) {
+		text.addModifyListener( listener );
+	}
+
+	public void removeModifyListener( final ModifyListener listener ) {
+		text.removeModifyListener( listener );
 	}
 
 }

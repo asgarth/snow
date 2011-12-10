@@ -6,22 +6,33 @@ import org.eclipse.swt.widgets.Layout;
 
 public class GridLayoutHelper implements LayoutHelper<GridData> {
 
-	private static final Layout layout = new GridLayout( 2, false );
+	private static final int CAPTION_STYLE = GridData.HORIZONTAL_ALIGN_BEGINNING | GridData.VERTICAL_ALIGN_CENTER;
+	private static final int CONTROL_STYLE = GridData.FILL_HORIZONTAL | GridData.VERTICAL_ALIGN_CENTER;
 
-	private static final GridData CAPTION_DATA = new GridData( GridData.HORIZONTAL_ALIGN_BEGINNING | GridData.VERTICAL_ALIGN_CENTER );
+	private final Layout layout;
 
-	private static final GridData CONTROL_DATA = new GridData( GridData.FILL_HORIZONTAL );
+	public GridLayoutHelper() {
+		this( 2 );
+	}
+
+	public GridLayoutHelper( final int columns ) {
+		this( columns, false );
+	}
+
+	public GridLayoutHelper( final int columns, final boolean equalsColumns ) {
+		layout = new GridLayout( columns, equalsColumns );
+	}
 
 	public Layout getLayout() {
 		return layout;
 	}
 
 	public GridData getCaptionLayoutData() {
-		return CAPTION_DATA;
+		return new GridData( CAPTION_STYLE );
 	}
 
 	public GridData getControlLayoutData() {
-		return CONTROL_DATA;
+		return new GridData( CONTROL_STYLE );
 	}
 
 }
