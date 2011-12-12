@@ -6,34 +6,29 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Control;
 import org.snow.form.Form;
+import org.snow.form.field.enums.TimeStyle;
 
 public class TimeField extends AbstractField<String> implements Field<String> {
-
-	public enum TIME_STYLE {
-		H12( 12 ),
-		H24( 24 );
-
-		private final int value;
-
-		private TIME_STYLE( final int value ) {
-			this.value = value;
-		}
-	}
 
 	private final Combo time;
 
 	public TimeField( final Form parent, final String caption ) {
-		this( parent, caption, TIME_STYLE.H24 );
+		this( parent, caption, TimeStyle.H24 );
 	}
 
-	public TimeField( final Form parent, final String caption, final TIME_STYLE style ) {
+	public TimeField( final Form parent, final String caption, final TimeStyle style ) {
 		super( parent );
 
 		time = new Combo( parent, SWT.DROP_DOWN );
-		for( int i = 0; i < style.value; i++ )
-			time.add( padLeft( String.valueOf( i ), 2, '0' ) + ":00", i );
+		setTimeFormat( style );
 
 		setCaption( caption );
+	}
+	
+	public void setTimeFormat( final TimeStyle style ) {
+		time.removeAll();
+		for( int i = 0; i < style.getValue(); i++ )
+			time.add( padLeft( String.valueOf( i ), 2, '0' ) + ":00", i );
 	}
 
 	public String getValue() {

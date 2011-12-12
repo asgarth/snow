@@ -15,12 +15,12 @@ public class TableColumnAdapter extends ControlAdapter {
 
 	/** Constructs an adapter for the specified table using the input weights for column layout.
 	 * 
-	 * @param table the table which column will be resized
+	 * @param table the table which columns will be resized
 	 * @param weight the weight of the columns.
 	 */
-	public TableColumnAdapter( final Table table, final int... weight ) {
+	public TableColumnAdapter( final Table table, final int ... weight ) {
 		if( table.getColumnCount() != weight.length )
-			throw new IllegalArgumentException( "Number of table column must be equals to number of grow weight specified." );
+			throw new IllegalArgumentException( "Number of table columns must be equals to number of grow weight specified." );
 
 		this.table = table;
 		this.weight = weight;

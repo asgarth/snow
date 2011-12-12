@@ -3,6 +3,7 @@ package org.snow.form.field;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Control;
 import org.snow.form.Form;
@@ -58,6 +59,35 @@ public class CheckBoxField extends AbstractStringField {
 		return check;
 	}
 
+	public void setLabelLayout( final Object layout ) {
+		if( ! rightTitle ) {
+			super.setLabelLayout( layout );
+			return;
+		}
+
+		if( ! ( layout instanceof GridData ) ) {
+			super.setLabelLayout( layout );
+			return;
+		}
+		
+		label.dispose();
+	}
+
+	public void setControlLayout( final Object layout ) {
+		if( ! rightTitle ) {
+			super.setControlLayout( layout );
+			return;
+		}
+		
+		if( ! ( layout instanceof GridData ) ) {
+			super.setControlLayout( layout );
+			return;
+		}
+		
+		( ( GridData ) layout ).horizontalSpan = 2;
+		getControl().setLayoutData( layout );
+	}
+	
 	public void addSelectionListener( final SelectionListener listener ) {
 		check.addSelectionListener( listener );
 	}

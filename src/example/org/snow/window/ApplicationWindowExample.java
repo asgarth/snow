@@ -2,6 +2,7 @@ package example.org.snow.window;
 
 import org.eclipse.swt.widgets.Display;
 import org.snow.form.Form;
+import org.snow.form.field.CheckBoxField;
 import org.snow.form.field.TextField;
 import org.snow.form.layout.GridLayoutHelper;
 import org.snow.window.ApplicationWindow;
@@ -42,12 +43,10 @@ public class ApplicationWindowExample {
 		field4.setCaption( "field4" );
 		form.add( "field4", field4 );
 
-		final TextField field5 = new TextField( form );
-		field5.setCaption( "field5" );
+		final CheckBoxField field5 = new CheckBoxField( form, "field5 with front label", false );
 		form.add( "field5", field5 );
 
-		final TextField field6 = new TextField( form );
-		field6.setCaption( "field6" );
+		final CheckBoxField field6 = new CheckBoxField( form, "field6 with text on the right side", true );
 		form.add( "field6", field6 );
 
 		app.setFooter( new StandardFooter( app, "OK", "Close" ) );

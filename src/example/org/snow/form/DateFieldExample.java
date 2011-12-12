@@ -12,7 +12,7 @@ public class DateFieldExample {
 
 	public static void main( final String[] args ) {
 		final Display display = new Display();
-		final ApplicationWindow app = new ApplicationWindow( display, "Date Field Example", 400, 300 );
+		final ApplicationWindow app = new ApplicationWindow( display, "Date Field Example", 400, 320 );
 		app.setHeader( new TitleHeader( app, "Date Example", "./resources/example/logo.png" ) );
 
 		final Form form = new Form( app.getShell() );
@@ -21,6 +21,9 @@ public class DateFieldExample {
 
 		final DateField date = new DateField( form, "Select Date" );
 		form.add( "date", date );
+		
+		final DateField time = new DateField( form, "Select Date/Time", true );
+		form.add( "time", time );
 
 		app.setFooter( new StandardFooter( app, "OK", "Close" ) );
 
