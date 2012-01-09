@@ -20,9 +20,9 @@ public class ApplicationWindow implements Window {
 	public static final int WINDOW_STYLE = SWT.SHELL_TRIM;
 
 	/** window dimensions */
-	protected final int width;
+	private final int width;
 
-	protected final int height;
+	private final int height;
 
 	/** SWT var */
 	protected final Display display;
@@ -44,8 +44,7 @@ public class ApplicationWindow implements Window {
 		this( parent.getDisplay(), parent, WINDOW_STYLE, title, width, height );
 	}
 
-	protected ApplicationWindow( final Display display, final Shell parent, final int style, final String title, final int width,
-			final int height ) {
+	protected ApplicationWindow( final Display display, final Shell parent, final int style, final String title, final int width, final int height ) {
 		// init UI
 		this.display = display;
 		this.shell = ( parent == null ) ? new Shell( display, style ) : new Shell( parent, style );
@@ -55,7 +54,7 @@ public class ApplicationWindow implements Window {
 		final Point allowed = Displays.computeAllowedSize( shell.getDisplay(), width, height );
 		this.width = allowed.x;
 		this.height = allowed.y;
-		shell.setSize( this.width, this.height );
+		this.shell.setSize( this.width, this.height );
 	}
 
 	public void open() {
