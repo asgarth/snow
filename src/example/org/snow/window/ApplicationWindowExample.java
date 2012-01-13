@@ -19,6 +19,7 @@ public class ApplicationWindowExample {
 		Composite main = app.getContent();
 		
 		// add widgets to this component as in standard SWT application
+		// ...
 		
 		// add standard button to window
 		app.setFooter( new StandardFooter( app, "OK", "Close" ) );
