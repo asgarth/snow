@@ -13,19 +13,12 @@ public class FormWindowExample {
 
 	public static void main( final String[] args ) {
 		final Display display = new Display();
-		final ApplicationWindow app = new ApplicationWindow( display, "Form Window Example", 600, 380 );
+		final ApplicationWindow app = new ApplicationWindow( display, "Form Window Example", 400, 320 );
 		app.setHeader( new TitleHeader( app, "Title", "./resources/example/logo.png" ) );
 
 		final Form form = new Form( app.getShell() );
 		form.setFormLayoutHelper( new GridLayoutHelper() );
 		app.setContent( form );
-
-		final TextField name = new TextField( form, "Name" );
-		form.add( "name", name );
-
-		final TextField surname = new TextField( form );
-		surname.setCaption( "Surname" );
-		form.add( "surname", surname );
 
 		final TextField field1 = new TextField( form );
 		field1.setCaption( "field1" );
