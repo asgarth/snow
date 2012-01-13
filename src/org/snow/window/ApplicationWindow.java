@@ -93,7 +93,7 @@ public class ApplicationWindow implements Window {
 	}
 
 	public void setContent( final Composite content ) {
-		if( this.content != null && !this.content.isDisposed() )
+		if( this.content != null && ! this.content.isDisposed() )
 			this.content.dispose();
 
 		this.content = content;
