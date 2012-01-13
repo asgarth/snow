@@ -10,16 +10,11 @@ public class SplashScreenExample {
 		final SpalshScreen splash = new SpalshScreen( display, "./resources/example/splash.jpg" );
 
 		display.asyncExec( new Runnable() {
-
 			public void run() {
-				try {
-					Thread.sleep( 1000 );
-				} catch( InterruptedException e ) {	}
+				sleep( 2000 );
 				splash.setProgress( 50 );
 
-				try {
-					Thread.sleep( 1000 );
-				} catch( InterruptedException e ) {	}
+				sleep( 2000 );
 				splash.setProgress( 100 );
 
 				splash.close();
@@ -27,6 +22,12 @@ public class SplashScreenExample {
 		} );
 
 		splash.open();
+	}
+	
+	private static void sleep(long millis) {
+		try {
+			Thread.sleep( millis );
+		} catch( InterruptedException ignore ) { }
 	}
 
 }
