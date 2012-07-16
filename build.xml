@@ -35,7 +35,7 @@
 				<exclude name="org/snow/binding/**/*.class" />
 				<exclude name="org/snow/prefs/**/*.class" />
 			</fileset>
-			<fileset dir="${resource}" includes="**/*.png" />
+			<fileset dir="${resource}" includes="images/*.png" />
 
 			<manifest>
 				<attribute name="Specification-Title" value="${name}" />

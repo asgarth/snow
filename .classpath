@@ -15,6 +15,6 @@
 	<classpathentry kind="lib" path="lib/binding/org.eclipse.jface.databinding_1.5.0.I20100907-0800.jar"/>
 	<classpathentry kind="lib" path="lib/binding/com.ibm.icu.base_4.4.2.v20110208.jar"/>
 	<classpathentry kind="lib" path="lib/prefs/simple-xml-2.6.1.jar"/>
-	<classpathentry kind="lib" path="lib/swt-linux32-3.7.1.jar"/>
+	<classpathentry kind="lib" path="lib/swt-linux64-3.7.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
