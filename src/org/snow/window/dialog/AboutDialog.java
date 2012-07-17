@@ -99,7 +99,7 @@ public class AboutDialog extends Dialog {
 		}
 		
 		if( text != null && ! text.equals( "" ) ) {
-			final Label aboutText = new Label( shell, SWT.NONE );
+			final Label aboutText = new Label( shell, SWT.WRAP );
 			aboutText.setText( text );
 			if( color != null )
 				aboutText.setForeground( color );

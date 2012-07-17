@@ -14,7 +14,7 @@ public class AboutDialogExample {
 		final AboutDialog dialog = new AboutDialog(new Shell(display), "About " + APP_NAME, "./resources/example/about.png", "Version: " + 1.0);
 		dialog.setTextColor(Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
 		dialog.setWebsite("http://www.example.com");
-		dialog.setText("A simple about dialog with some text...");
+		dialog.setText("A simple about dialog with some additional text that should be long enought to span over multiple lines...");
 		dialog.open();
 	}
 
