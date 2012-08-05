@@ -7,8 +7,7 @@ import java.util.Properties;
 public class AppUtils {
 
 	/** Utility class, prevent instantiation. */
-	private AppUtils() {
-	}
+	private AppUtils() { }
 
 	/** Return the application version. */
 	public static String version() {

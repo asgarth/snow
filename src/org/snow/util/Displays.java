@@ -15,8 +15,8 @@ import org.eclipse.swt.widgets.Display;
 /** Utility class with common method on display and screen resolution. */
 public class Displays {
 
-	private Displays() {
-	}
+	/** Utility class, prevent instantiation. */
+	private Displays() { }
 
 	/** Check if required window resolution is allowed on current display, otherwise an allowed dimension is returned. */
 	public static Point computeAllowedSize( final Display display, final int width, final int height ) {

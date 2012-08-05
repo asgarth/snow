@@ -7,6 +7,7 @@ import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.widgets.Display;
 import org.snow.util.Constants;
+import org.snow.util.ImageUtils;
 
 /** A class implementing a singleton mouse cursors cache. */
 public class CursorCache {
@@ -34,7 +35,7 @@ public class CursorCache {
 		if( cursorMap.containsKey( path ) )
 			return cursorMap.get( path );
 
-		final ImageData data = ImageCache.loadImageDataFromFile( path );
+		final ImageData data = ImageUtils.loadImageDataFromFile( path );
 		final Cursor cursor = new Cursor( Display.getDefault(), data, 0, 0 );
 		cursorMap.put( path, cursor );
 

@@ -17,6 +17,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.snow.util.Displays;
+import org.snow.util.ImageUtils;
+import org.snow.util.cache.ImageCache;
 
 public class AboutDialog extends Dialog {
 
@@ -45,7 +47,7 @@ public class AboutDialog extends Dialog {
 		this.display = shell.getDisplay();
 		this.title = title;
 
-		this.image = new Image( display, image );
+		this.image = ImageUtils.loadImageFromFile( display, image );
 		this.version = version;
 	}
 	

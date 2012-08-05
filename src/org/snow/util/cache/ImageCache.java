@@ -1,15 +1,13 @@
 package org.snow.util.cache;
 
-import java.io.File;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.program.Program;
 import org.eclipse.swt.widgets.Display;
 import org.snow.util.Constants;
+import org.snow.util.ImageUtils;
 
 /** A class implementing a singleton cache for images and icons. */
 public class ImageCache {
@@ -31,36 +29,6 @@ public class ImageCache {
 		return instance;
 	}
 
-	/** Returns a new Image object build from input path (searching input as file or resource). Image received with this method must be
-	 * disposed after use from the caller.
-	 * 
-	 * @param path the image file.
-	 * @return the image associated with specified file. */
-	public static Image loadImageFromFile( final String path ) {
-		if( new File( path ).exists() )
-			return new Image( Display.getDefault(), path );
-
-		return new Image( Display.getDefault(), getResourceAsStream( path ) );
-	}
-
-	/** Returns a new ImageData object build from input path (searching input as file or resource).
-	 * 
-	 * @param path the image file.
-	 * @return the ImageData object associated with specified file. */
-	public static ImageData loadImageDataFromFile( final String path ) {
-		if( new File( path ).exists() )
-			return new ImageData( path );
-
-		return new ImageData( getResourceAsStream( path ) );
-	}
-
-	private static InputStream getResourceAsStream( final String resource ) {
-		if( resource.startsWith( "." ) )
-			return ImageCache.class.getResourceAsStream( resource.substring( 1 ) );
-
-		return ImageCache.class.getResourceAsStream( resource );
-	}
-
 	/** Returns the image associated with the specified input file. If image is not found a new image is created, cached and then returned.
 	 * 
 	 * @param path the image file.
@@ -68,7 +36,7 @@ public class ImageCache {
 	public Image getImage( final String path ) {
 		Image image = imageMap.get( path );
 		if( image == null ) {
-			image = loadImageFromFile( path );
+			image = ImageUtils.loadImageFromFile( path );
 			imageMap.put( path, image );
 		}
 
