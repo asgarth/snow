@@ -11,12 +11,12 @@ public class FormDataBuilder {
 
 	public FormDataBuilder() {
 		data = new FormData();
-		data.top = new FormAttachment( 0, 0 );
-		data.bottom = new FormAttachment( 100, 0 );
-		data.left = new FormAttachment( 0, 0 );
-		data.right = new FormAttachment( 100, 0 );
 	}
 
+	public FormDataBuilder top( final int numerator ) {
+		return top(numerator, 0);
+	}
+	
 	public FormDataBuilder top( final int numerator, final int offset ) {
 		data.top = new FormAttachment( numerator, offset );
 		return this;
@@ -32,6 +32,10 @@ public class FormDataBuilder {
 		return this;
 	}
 
+	public FormDataBuilder bottom( final int numerator ) {
+		return bottom(numerator, 0);
+	}
+	
 	public FormDataBuilder bottom( final int numerator, final int offset ) {
 		data.bottom = new FormAttachment( numerator, offset );
 		return this;
@@ -47,6 +51,10 @@ public class FormDataBuilder {
 		return this;
 	}
 
+	public FormDataBuilder left( final int numerator ) {
+		return left(numerator, 0);
+	}
+	
 	public FormDataBuilder left( final int numerator, final int offset ) {
 		data.left = new FormAttachment( numerator, offset );
 		return this;
@@ -62,6 +70,10 @@ public class FormDataBuilder {
 		return this;
 	}
 
+	public FormDataBuilder right( final int numerator ) {
+		return right(numerator, 0);
+	}
+	
 	public FormDataBuilder right( final int numerator, final int offset ) {
 		data.right = new FormAttachment( numerator, offset );
 		return this;
@@ -75,6 +87,13 @@ public class FormDataBuilder {
 	public FormDataBuilder right( final Control control, final int offset ) {
 		data.right = new FormAttachment( control, offset );
 		return this;
+	}
+	
+	public void fill() {
+		data.top = new FormAttachment( 0, 0 );
+		data.bottom = new FormAttachment( 100, 0 );
+		data.left = new FormAttachment( 0, 0 );
+		data.right = new FormAttachment( 100, 0 );
 	}
 
 	public FormData build() {
