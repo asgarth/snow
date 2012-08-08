@@ -1,5 +1,7 @@
 package org.snow.util;
 
+import java.io.File;
+
 /** Provide simplified platform information. */
 public class Platform {
     public static final int UNSPECIFIED = -1;
@@ -65,7 +67,7 @@ public class Platform {
     public static String getUserApp(final String appName) {
     	if (isWindows()) {
     		final String addData = System.getenv("APPDATA");
-    		if (addData != null && ! addData.isEmpty())
+    		if (addData != null && ! addData.isEmpty() && new File(addData).exists())
     			return addData + getPathSeparator() + appName;
     		
     		return getUserHome() + getPathSeparator() + appName;
