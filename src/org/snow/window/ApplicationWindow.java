@@ -62,7 +62,9 @@ public class ApplicationWindow implements Window {
 		init();
 
 		/** open shell */
-		shell.setLocation( Displays.getDisplayCenter( display, shell.getBounds() ) );
+		if( ! shell.getMaximized() )
+			shell.setLocation( Displays.getDisplayCenter( display, shell.getBounds() ) );
+		
 		shell.open();
 
 		/** main loop */
