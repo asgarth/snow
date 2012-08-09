@@ -61,11 +61,16 @@ public class ApplicationWindow implements Window {
 		/** init ui layouts */
 		init();
 
-		/** open shell */
+		/** center shell on screen */
 		if( ! shell.getMaximized() )
 			shell.setLocation( Displays.getDisplayCenter( display, shell.getBounds() ) );
 		
+		/** open shell */
 		shell.open();
+		
+		/** resize if required */
+		if( shell.getSize().x != width || shell.getSize().y != height )
+			shell.setSize( width, height );
 
 		/** main loop */
 		while( !shell.isDisposed() )
