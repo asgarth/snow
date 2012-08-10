@@ -1,4 +1,6 @@
-**_Snow_** is a small toolkit for rapid [SWT](http://eclipse.org/swt) application development. For example of what can be simplified using _snow_ check the following examples:
+**_Snow_** is a small toolkit for rapid [SWT](http://eclipse.org/swt) application development.
+
+Examples:
 
 [Create a simple window](http://github.com/asgarth/snow/wiki/Create-a-simple-window)  
 [Create a splash screen](http://github.com/asgarth/snow/wiki/Create-a-splash-screen)  
